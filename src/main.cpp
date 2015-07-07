@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include "../headers/Jueguito.h"
 
 SDL_Window* g_pWindow = 0;
 SDL_Renderer* g_pRenderer = 0;
@@ -16,6 +17,8 @@ int main(int argc, char* args[]){
 	}
 	else
 		return 1; // sdl could not initialize
+
+	Jueguito* jueguito = new Jueguito();
 
 	// everything succeeded lets draw the window	
 	// This function expects Red, Green, Blue and
