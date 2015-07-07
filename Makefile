@@ -1,5 +1,4 @@
 CC = g++
-
 SRCS_DIR = src/
 OBJS_DIR = objs/
 SRC = $(wildcard $(SRCS_DIR)*.cpp)
@@ -17,7 +16,7 @@ $(EXE): $(OBJS)
 	$(CC) $(OBJS) -o $(EXE) $(CXXFLAGS) $(LIBS) 
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp
-	$(CC) $(CXXFLAGS) $< -c -o $(OBJS_FOLDER)$@ $(LIBS)
+	$(CC) $(CXXFLAGS) $< -c -o $@ $(LIBS)
 
 clean:
 	rm -f $(EXE) $(OBJS)
