@@ -2,6 +2,8 @@
 #define __Jueguito__
 #include <SDL2/SDL.h>
 #include <iostream>
+#include "../headers/Window.h"
+#include "../headers/Renderer.h"
 
 /**
  * Clase principal
@@ -17,11 +19,11 @@ public:
 	void handleEvents();
 	void update();
 	void clean();
-	bool getIsRunning();
+	bool IsRunning();
 	void setIsRunning(bool estado);
 private:
 	bool isRunning;
-	SDL_Window* window;
-	SDL_Renderer* renderer;
+	Window window;
+	Renderer renderer;
 };
 #endif

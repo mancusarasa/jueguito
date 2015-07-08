@@ -1,9 +1,6 @@
 #include "../headers/Jueguito.h"
 
-
-Jueguito::Jueguito() {
-	
-}
+Jueguito::Jueguito():isRunning(false){}
 
 Jueguito::~Jueguito() {
 
@@ -15,22 +12,19 @@ void Jueguito::init() {
 	// initialize SDL
 	if(SDL_Init(SDL_INIT_EVERYTHING) >= 0){
 		setIsRunning(true);
-
 		/**
-		 * Crear métodos propioos para construir la ventana y el renderer
+		 * Crear métodos propios para construir la ventana y el renderer
 		 */
 		
-		// if succeeded create our window
-		this->window = SDL_CreateWindow("Chapter 1:Setting up SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_SHOWN);
+		// if succeeded create our window	 
 		// if the window creation succeeded create our renderer
-		if(this->window) {
-			this->renderer = SDL_CreateRenderer(this->window, -1, 0);
-			if (this->renderer) {
+		if(window.Create("Chapter 1:Doge",640,480)) {
+			if (renderer.Create(window)){
 				//std::cout << "render init ok" << std::endl;
 				// everything succeeded lets draw the window	
 				// This function expects Red, Green, Blue and
 				// Alpha as color values
-				SDL_SetRenderDrawColor(this->renderer, 255, 0, 0, 255);
+				renderer.SetDrawColor(255, 0, 0, 255);
 			}	
 		}
 		
@@ -45,12 +39,10 @@ void Jueguito::init() {
 }
 
 void Jueguito::render() {
-		// clear the window to black
-	SDL_RenderClear(this->renderer);
+	// clear the window to black
+	renderer.Clear();
 	// show the window
-	SDL_RenderPresent(this->renderer);
-
-
+	renderer.Present();
 }
 
 void Jueguito::update() {
@@ -62,10 +54,22 @@ void Jueguito::clean() {
 }
 
 void Jueguito::handleEvents() {
-	
+	SDL_Event event;
+	if(SDL_PollEvent(&event)){
+		switch(event.type){
+			case SDL_QUIT:{
+				setIsRunning(false);
+				break;
+			}
+			default:{
+				/* Evento sin handler */
+				break;
+			}
+		}
+	}
 }
 
-bool Jueguito::getIsRunning() {
+bool Jueguito::IsRunning() {
 	return this->isRunning;
 }
 
