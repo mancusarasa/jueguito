@@ -3,34 +3,30 @@
 Jueguito::Jueguito():isRunning(false){}
 
 Jueguito::~Jueguito() {
-
+	for (int i = 0; i < textures.size(); i++){
+		delete textures[i];
+	}
 }
-
 
 void Jueguito::init() {
 	
 	// initialize SDL
 	if(SDL_Init(SDL_INIT_EVERYTHING) >= 0){
 		setIsRunning(true);
-		/**
-		 * Crear métodos propios para construir la ventana y el renderer
-		 */
-		
 		// if succeeded create our window	 
 		// if the window creation succeeded create our renderer
-		if(window.Create("Chapter 1:Doge",640,480)) {
+		if (window.Create("Much window, wow",640,480)) {
 			if (renderer.Create(window)){
 				//std::cout << "render init ok" << std::endl;
 				// everything succeeded lets draw the window	
 				// This function expects Red, Green, Blue and
 				// Alpha as color values
-				renderer.SetDrawColor(255, 0, 0, 255);
+				renderer.SetDrawColor(255, 255, 0, 0);
+				Texture* doge = renderer.CreateTexture("./imgs/doge.bmp");
+				textures.push_back(doge);
 			}	
 		}
-		
 		//std::cout << "running true" << std::endl;
-		
-	
 	}
 	else {
 		std::cout << "sdl could not initialize" << std::cout;
@@ -41,6 +37,10 @@ void Jueguito::init() {
 void Jueguito::render() {
 	// clear the window to black
 	renderer.Clear();
+	// mostrar las texturas
+	for (int i = 0; i < textures.size(); i++){
+		renderer.ShowTexture(textures[i]);
+	}
 	// show the window
 	renderer.Present();
 }
@@ -50,7 +50,8 @@ void Jueguito::update() {
 }
 
 void Jueguito::clean() {
-
+	SDL_Delay(250);
+	SDL_Quit();	
 }
 
 void Jueguito::handleEvents() {

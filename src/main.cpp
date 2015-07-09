@@ -3,7 +3,7 @@
 #include "../headers/Jueguito.h"
 
 int main(int argc, char* args[]){
-	
+
 	Jueguito jueguito;
 	jueguito.init();
 	//std::cout << jueguito.IsRunning() << std::endl; 
@@ -15,9 +15,5 @@ int main(int argc, char* args[]){
 	}
 
 	jueguito.clean();
-
-	// set a delay before quitting
-	// clean up SDL
-	SDL_Quit();
 	return 0;
 }

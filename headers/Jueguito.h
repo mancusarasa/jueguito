@@ -2,8 +2,10 @@
 #define __Jueguito__
 #include <SDL2/SDL.h>
 #include <iostream>
+#include <vector>
 #include "../headers/Window.h"
 #include "../headers/Renderer.h"
+#include "../headers/Texture.h"
 
 /**
  * Clase principal
@@ -25,5 +27,6 @@ private:
 	bool isRunning;
 	Window window;
 	Renderer renderer;
+	std::vector<Texture*> textures;
 };
 #endif

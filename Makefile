@@ -5,7 +5,7 @@ SRC = $(wildcard $(SRCS_DIR)*.cpp)
 OBJS_FILES := $(patsubst %.cpp,%.o,$(notdir $(SRC)))
 OBJS = $(addprefix $(OBJS_DIR),$(OBJS_FILES))
 CXXFLAGS = -w -ggdb
-LIBS = -lSDL2 -lSDL2_image
+LIBS = -lSDL2 -lSDL2_image -ljsoncpp
 EXE = main
 
 .PHONY: all clean
