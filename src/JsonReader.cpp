@@ -3,11 +3,7 @@
 JsonReader* JsonReader::pInstance = 0;
 
 bool JsonReader::load() {
-/*
-	Json::Value root;
-	Json::Reader reader;
-	std::ifstream file;
-*/
+
 	const char* path = "config.json";
 	file.open(path,std::fstream::in);
 
@@ -23,10 +19,16 @@ bool JsonReader::load() {
 		return false;
 	}
 
-//el 2do parametro del get() es el valor por defecto si no lo encuentra en el json
+	/*
+	 * Al agregar nuevas configuraciones al config.json, crear métodos para levantarlos como loadWindowConfig()
+	 */
+
 	loadWindowConfig();
+	
 	file.close();
 }
+
+
 
 void JsonReader::loadWindowConfig() {
 	int window_width = root["ventana"].get("ancho",640).asInt();
