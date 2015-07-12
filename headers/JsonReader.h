@@ -8,17 +8,20 @@
 class JsonReader {
 public:
 	static JsonReader* Instance() {
-		if ( !pInstance) pInstance = new JsonReader();
+		if ( !pInstance) {
+			pInstance = new JsonReader();
+			pInstance->load();
+		}
 		return pInstance;
 	}
 	bool load();
+	int getWindowValue(std::string property);
 private:
 	JsonReader(){}
 	~JsonReader(){}
 	static JsonReader* pInstance;
 	void loadWindowConfig();
 	std::map<std::string,int> windowConfig;
-	int getWindowValue(std::string property);
 	Json::Value root;
 	Json::Reader reader;
 	std::ifstream file;

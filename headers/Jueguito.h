@@ -6,6 +6,7 @@
 #include "../headers/Window.h"
 #include "../headers/Renderer.h"
 #include "../headers/Texture.h"
+#include "../headers/JsonReader.h"
 
 /**
  * Clase principal

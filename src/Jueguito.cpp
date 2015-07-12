@@ -10,12 +10,17 @@ Jueguito::~Jueguito() {
 
 void Jueguito::init() {
 	
+
+
 	// initialize SDL
 	if(SDL_Init(SDL_INIT_EVERYTHING) >= 0){
 		setIsRunning(true);
 		// if succeeded create our window	 
 		// if the window creation succeeded create our renderer
-		if (window.Create("Much window, wow",640,480)) {
+		int windowHeight = JsonReader::Instance()->getWindowValue("height");
+		int windowWidth = JsonReader::Instance()->getWindowValue("width");
+
+		if (window.Create("Much window, wow",windowWidth,windowHeight)) {
 			if (renderer.Create(window)){
 				//std::cout << "render init ok" << std::endl;
 				// everything succeeded lets draw the window	
