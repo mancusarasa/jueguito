@@ -18,11 +18,12 @@ public:
 	/* Devuelve una textura. Liberar la memoria es 
 	 * responsabilidad del que llama a la función.
 	 */
-	Texture* CreateTexture(std::string);
-	void ShowTexture(Texture* t);
+	void RenderTexture(Texture* t);
 
 private:
 	SDL_Renderer* pRenderer;
+	SDL_Renderer* GetRenderer(){return pRenderer;};
+	friend class Jueguito;
 };
 
 #endif	/*__RENDERER__*/

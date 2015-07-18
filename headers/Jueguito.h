@@ -1,12 +1,13 @@
 #ifndef __Jueguito__
 #define __Jueguito__
+
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <vector>
 #include "../headers/Window.h"
 #include "../headers/Renderer.h"
-#include "../headers/Texture.h"
 #include "../headers/JsonReader.h"
+#include "Player.h"
 
 /**
  * Clase principal
@@ -30,4 +31,6 @@ private:
 	Renderer renderer;
 	std::vector<Texture*> textures;
 };
+
+
 #endif

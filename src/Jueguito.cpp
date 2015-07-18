@@ -27,8 +27,8 @@ void Jueguito::init() {
 				// This function expects Red, Green, Blue and
 				// Alpha as color values
 				renderer.SetDrawColor(255, 255, 0, 0);
-				Texture* doge = renderer.CreateTexture("./imgs/doge.bmp");
-				textures.push_back(doge);
+				Player* pallet = new Player(renderer.GetRenderer());
+				textures.push_back(pallet);
 			}	
 		}
 		//std::cout << "running true" << std::endl;
@@ -44,7 +44,7 @@ void Jueguito::render() {
 	renderer.Clear();
 	// mostrar las texturas
 	for (int i = 0; i < textures.size(); i++){
-		renderer.ShowTexture(textures[i]);
+		renderer.RenderTexture(textures[i]);
 	}
 	// show the window
 	renderer.Present();
@@ -66,6 +66,14 @@ void Jueguito::handleEvents() {
 			case SDL_QUIT:{
 				setIsRunning(false);
 				break;
+			}
+			case SDL_KEYDOWN:{
+				for (int i = 0; i < textures.size(); i++){
+					if(event.key.keysym.sym == SDLK_UP)
+						textures[i]->MoveDown();
+					else
+						textures[i]->MoveUp();
+				}
 			}
 			default:{
 				/* Evento sin handler */

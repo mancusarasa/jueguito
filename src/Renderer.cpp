@@ -34,13 +34,7 @@ void Renderer::Present(){
 	SDL_RenderPresent(pRenderer);
 }
 
-
-Texture* Renderer::CreateTexture(std::string path){
+void Renderer::RenderTexture(Texture* t){
 	assert(pRenderer);
-	return new Texture(path,pRenderer);
-}
-
-void Renderer::ShowTexture(Texture* t){
-	assert(pRenderer);
-	SDL_RenderCopy(pRenderer,t->GetTexture(),&t->GetRectangle(),&t->GetRectangle());
+	t->Draw(pRenderer);
 }

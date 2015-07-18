@@ -1,6 +1,7 @@
 CC = g++
 SRCS_DIR = src/
 OBJS_DIR = objs/
+HEADERS = $(wildcard headers/*.h)
 SRC = $(wildcard $(SRCS_DIR)*.cpp)
 OBJS_FILES := $(patsubst %.cpp,%.o,$(notdir $(SRC)))
 OBJS = $(addprefix $(OBJS_DIR),$(OBJS_FILES))
@@ -12,7 +13,7 @@ EXE = main
 
 all: $(EXE)
 
-$(EXE): $(OBJS)
+$(EXE): $(OBJS) $(HEADERS)
 	$(CC) $(OBJS) -o $(EXE) $(CXXFLAGS) $(LIBS) 
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.cpp

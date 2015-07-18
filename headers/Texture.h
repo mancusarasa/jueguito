@@ -6,21 +6,20 @@
 
 class Texture {
 public:
+	Texture(std::string, SDL_Renderer*);
 	~Texture();
-private:
+	virtual void Draw(SDL_Renderer*)=0;
+	virtual void MoveDown()=0;
+	virtual void MoveUp()=0;
+
+protected:
 	SDL_Texture* pTexture;
-	SDL_Rect rectangle;
+	SDL_Rect rendererRectangle;
+	SDL_Rect bmpRectangle;
 	std::string pathToImage;
 	SDL_Texture* GetTexture() {return pTexture;}
-	SDL_Rect& GetRectangle() {return rectangle;}
+	SDL_Rect& GetRectangle() {return rendererRectangle;}
 	
-	/* Decision polemica de diseño: que Renderer se encargue 
-	 * de las texturas teniendo toda la visibilidad sobre sus atributos.
-	 */
-	Texture(std::string, SDL_Renderer*);
-	
-	
-	friend class Renderer;
 };
 
 #endif /*__TEXTURE__*/
