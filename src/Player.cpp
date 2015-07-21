@@ -12,10 +12,10 @@ Player::~Player(){
 
 }
 
-void Player::MoveDown(){
-	rendererRectangle.y--;
+void Player::moveDown(){
+	rendererRectangle.y++;
 }
 
-void Player::MoveUp(){
-	rendererRectangle.y++;
+void Player::moveUp(){
+	rendererRectangle.y--;
 }

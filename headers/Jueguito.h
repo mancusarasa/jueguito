@@ -8,6 +8,7 @@
 #include "../headers/Renderer.h"
 #include "../headers/JsonReader.h"
 #include "Player.h"
+#include "InputHandler.h"
 
 /**
  * Clase principal

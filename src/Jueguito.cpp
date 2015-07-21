@@ -28,6 +28,7 @@ void Jueguito::init() {
 				// Alpha as color values
 				renderer.SetDrawColor(255, 255, 0, 0);
 				Player* pallet = new Player(renderer.GetRenderer());
+				InputHandler::Instance()->addPlayer(pallet);
 				textures.push_back(pallet);
 			}	
 		}
@@ -68,12 +69,15 @@ void Jueguito::handleEvents() {
 				break;
 			}
 			case SDL_KEYDOWN:{
+				InputHandler::Instance()->onKeyDown(event.key.keysym.sym);
+				break;
+				/*
 				for (int i = 0; i < textures.size(); i++){
 					if(event.key.keysym.sym == SDLK_UP)
 						textures[i]->MoveDown();
 					else
 						textures[i]->MoveUp();
-				}
+				}*/
 			}
 			default:{
 				/* Evento sin handler */

@@ -9,8 +9,8 @@ public:
 	Texture(std::string, SDL_Renderer*);
 	~Texture();
 	virtual void Draw(SDL_Renderer*)=0;
-	virtual void MoveDown()=0;
-	virtual void MoveUp()=0;
+	virtual void moveDown()=0;
+	virtual void moveUp()=0;
 
 protected:
 	SDL_Texture* pTexture;

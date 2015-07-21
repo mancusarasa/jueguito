@@ -10,8 +10,8 @@ public:
 	Player(SDL_Renderer*);
 	~Player();
 	void Draw(SDL_Renderer*);
-	void MoveDown();
-	void MoveUp();
+	void moveDown();
+	void moveUp();
 };
 
 #endif /*__PLAYER__*/ 
