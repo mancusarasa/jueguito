@@ -36,5 +36,5 @@ void Renderer::Present(){
 
 void Renderer::RenderTexture(Texture* t){
 	assert(pRenderer);
-	t->Draw(pRenderer);
+	t->draw();
 }

@@ -9,7 +9,7 @@ class Player : public Texture {
 public:
 	Player(SDL_Renderer*);
 	~Player();
-	void draw();
+	//void draw();
 	void moveDown();
 	void moveUp();
 };

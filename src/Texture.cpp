@@ -24,11 +24,13 @@ Texture::~Texture(){
 }
 
 void Texture::draw() {
+	rendererRectangle.x = x;
+	rendererRectangle.y = y;
 	SDL_RenderCopy(pRenderer_, GetTexture(), &bmpRectangle, &rendererRectangle);
 }
 
-void Texture::setPosition(int xx, int yy) {
-	rendererRectangle.x = xx;
-	rendererRectangle.y = yy;
+void Texture::setPosition(int posX, int posY) {
+	x = posX;
+	y = posY;
 
 }

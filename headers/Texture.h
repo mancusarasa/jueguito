@@ -20,6 +20,8 @@ protected:
 	SDL_Rect rendererRectangle;
 	SDL_Rect bmpRectangle;
 	std::string pathToImage;
+	float x;
+	float y;
 	SDL_Texture* GetTexture() {return pTexture;}
 	SDL_Rect& GetRectangle() {return rendererRectangle;}
 	
