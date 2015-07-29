@@ -30,6 +30,10 @@ void Jueguito::init() {
 				Player* pallet = new Player(renderer.GetRenderer());
 				InputHandler::Instance()->addPlayer(pallet);
 				textures.push_back(pallet);
+			
+				Texture* brick = new Brick(renderer.GetRenderer());
+				brick->setPosition(100,100);
+				textures.push_back(brick);
 			}	
 		}
 		//std::cout << "running true" << std::endl;
@@ -45,6 +49,7 @@ void Jueguito::render() {
 	renderer.Clear();
 	// mostrar las texturas
 	for (int i = 0; i < textures.size(); i++){
+		//std::cout << textures[i] << std::endl;
 		renderer.RenderTexture(textures[i]);
 	}
 	// show the window

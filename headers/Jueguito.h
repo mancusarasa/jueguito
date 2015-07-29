@@ -9,6 +9,7 @@
 #include "../headers/JsonReader.h"
 #include "Player.h"
 #include "InputHandler.h"
+#include "Brick.h"
 
 /**
  * Clase principal

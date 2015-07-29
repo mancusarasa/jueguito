@@ -15,9 +15,6 @@ public:
 	void SetDrawColor(int,int,int,int);
 	void Clear();
 	void Present();
-	/* Devuelve una textura. Liberar la memoria es 
-	 * responsabilidad del que llama a la función.
-	 */
 	void RenderTexture(Texture* t);
 
 private:

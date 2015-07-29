@@ -4,8 +4,8 @@ Player::Player(SDL_Renderer* pRenderer):Texture(IMAGE_PATH, pRenderer){
 
 }
 
-void Player::Draw(SDL_Renderer* pRenderer){
-	SDL_RenderCopy(pRenderer,GetTexture(),&bmpRectangle,&rendererRectangle);
+void Player::draw(){
+	SDL_RenderCopy(pRenderer_, GetTexture(), &bmpRectangle, &rendererRectangle);
 }
 
 Player::~Player(){

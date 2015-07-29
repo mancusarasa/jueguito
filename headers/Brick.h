@@ -1,12 +1,18 @@
 #ifndef __BRICK__
 #define __BRICK__
 
-class Brick
+#include "Texture.h"
+
+#define BRICK_BMP_PATH "imgs/pallet.bmp"
+
+class Brick : public Texture
 {
 public:
-	Brick();
+	Brick(SDL_Renderer*);
 	~Brick();
-	
+//	virtual void draw();
+	void moveDown();
+	void moveUp();
 };
 
 #endif
