@@ -24,9 +24,15 @@ Texture::~Texture(){
 
 }
 
+//Devuelve la versión int de un flotante, .5 redondea para arriba
+int floatToInt(float n) {
+	return static_cast<int>( n + 0.5);
+}
+
+//Las posiciones x e y son flotantes por cuestiones matemáticas, pero los pixeles son enteros, por eso es necesario convertir coordenadas a enteros
 void Texture::draw() {
-	rendererRectangle.x = x + JsonReader::Instance()->getStageValue("x");
-	rendererRectangle.y = y + JsonReader::Instance()->getStageValue("y");
+	rendererRectangle.x = floatToInt( x + JsonReader::Instance()->getStageValue("x") );
+	rendererRectangle.y = floatToInt( y + JsonReader::Instance()->getStageValue("y") );
 	SDL_RenderCopy(pRenderer_, GetTexture(), &bmpRectangle, &rendererRectangle);
 }
 
