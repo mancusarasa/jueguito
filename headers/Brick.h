@@ -2,8 +2,7 @@
 #define __BRICK__
 
 #include "Texture.h"
-
-#define BRICK_BMP_PATH "imgs/pallet.bmp"
+#define BRICK_BMP_PATH "imgs/brick.png"
 
 class Brick : public Texture
 {

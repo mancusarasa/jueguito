@@ -2,7 +2,8 @@
 
 
 Texture::Texture(std::string path,SDL_Renderer* pRenderer):pathToImage(path),pRenderer_(pRenderer){
-	SDL_Surface* pTempSurface = SDL_LoadBMP(path.c_str());
+	//SDL_Surface* pTempSurface = SDL_LoadBMP(path.c_str());
+	SDL_Surface* pTempSurface = IMG_Load(path.c_str());
 	pTexture = SDL_CreateTextureFromSurface(pRenderer,pTempSurface);
 	SDL_FreeSurface(pTempSurface);
 	SDL_QueryTexture(pTexture,0,0,&rendererRectangle.w,&rendererRectangle.h);
