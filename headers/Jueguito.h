@@ -11,7 +11,7 @@
 #include "InputHandler.h"
 #include "Brick.h"
 #include "Stage.h"
-
+#include "Ball.h"
 /**
  * Clase principal
  * bool isRunning mantiene el loop del juego

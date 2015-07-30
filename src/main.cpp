@@ -6,7 +6,7 @@ int main(int argc, char* args[]){
 
 	Jueguito jueguito;
 	jueguito.init();
-	//std::cout << jueguito.IsRunning() << std::endl; 
+	
 	//Loop principal
 	while( jueguito.IsRunning() ) {
 		jueguito.handleEvents();

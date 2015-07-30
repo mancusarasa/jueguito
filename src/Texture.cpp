@@ -26,7 +26,7 @@ Texture::~Texture(){
 
 //Devuelve la versión int de un flotante, .5 redondea para arriba
 int floatToInt(float n) {
-	return static_cast<int>( n + 0.5);
+	return static_cast<int>( roundf( n ) );
 }
 
 //Las posiciones x e y son flotantes por cuestiones matemáticas, pero los pixeles son enteros, por eso es necesario convertir coordenadas a enteros
@@ -37,9 +37,30 @@ void Texture::draw() {
 }
 
 
+void Texture::updatePosition(float posX, float posY) {
+	x = posX;
+	y = posY;
+}
 
-void Texture::setPosition(int posX, int posY) {
+void Texture::setPosition(float posX, float posY) {
 	x = posX + JsonReader::Instance()->getStageValue("x");
 	y = posY + JsonReader::Instance()->getStageValue("y");
 
+}
+
+void Texture::update() {
+
+}
+
+void Texture::moveUp() {
+
+}
+
+void Texture::moveDown() {
+
+}
+
+void Texture::setSize(int width, int height) {
+	rendererRectangle.w = width;
+	rendererRectangle.h = height;
 }

@@ -45,6 +45,9 @@ void Jueguito::init() {
 				brick->setPosition(100,100);
 				textures.push_back(brick);
 
+				Ball* ball = new Ball(renderer.GetRenderer());
+				ball->setPosition(stageWidth / 2, stageHeight / 2);
+				textures.push_back(ball);
 			}	
 		}
 		//std::cout << "running true" << std::endl;
@@ -68,7 +71,9 @@ void Jueguito::render() {
 }
 
 void Jueguito::update() {
-
+	for (int i = 0; i < textures.size(); i++){
+		textures[i]->update();
+	}
 }
 
 void Jueguito::clean() {

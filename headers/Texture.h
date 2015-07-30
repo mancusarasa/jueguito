@@ -12,9 +12,13 @@ public:
 	Texture(std::string, SDL_Renderer*);
 	~Texture();
 	virtual void draw();
-	virtual void setPosition(int x, int y);
-	virtual void moveDown()=0;
-	virtual void moveUp()=0;
+	virtual void setPosition(float x, float y); //Posicion inicial, usa el offset
+	virtual void updatePosition(float x, float y); //Posicion relativa a la actual, no usa el offset
+	virtual void moveDown();
+	virtual void moveUp();
+	virtual void update();
+	virtual void setSize(int width, int height);
+
 
 protected:
 	SDL_Renderer* pRenderer_;
