@@ -22,6 +22,7 @@ public:
 
 	//Métodos para acceder a la configuración guardada
 	int getWindowValue(std::string property);
+	int getStageValue(std::string property);
 
 private:
 	JsonReader(){}
@@ -34,9 +35,11 @@ private:
 	//Métodos para levantar la información del JSON
 	bool load();
 	void loadWindowConfig();
-	
+	void loadStageConfig();
+
 	//Las opciones pueden venir en distinto formato, por ahora uso una estructura de datos única por item
 	std::map<std::string,int> windowConfig;
+	std::map<std::string,int> stageConfig;
 };
 
 #endif

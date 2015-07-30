@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "InputHandler.h"
 #include "Brick.h"
+#include "Stage.h"
 
 /**
  * Clase principal
@@ -32,6 +33,7 @@ private:
 	Window window;
 	Renderer renderer;
 	std::vector<Texture*> textures;
+	Stage* stage;
 };
 
 

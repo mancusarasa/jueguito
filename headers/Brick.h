@@ -8,7 +8,7 @@
 class Brick : public Texture
 {
 public:
-	Brick(SDL_Renderer*);
+	Brick(SDL_Renderer*, int offsetX, int offsetY);
 	~Brick();
 //	virtual void draw();
 	void moveDown();

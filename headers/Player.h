@@ -7,7 +7,7 @@
 
 class Player : public Texture {
 public:
-	Player(SDL_Renderer*);
+	Player(SDL_Renderer* ,int offsetX, int offsetY);
 	~Player();
 	//void draw();
 	void moveDown();

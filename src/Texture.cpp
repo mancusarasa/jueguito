@@ -1,7 +1,7 @@
 #include "../headers/Texture.h"
 
 
-Texture::Texture(std::string path,SDL_Renderer* pRenderer):pathToImage(path),pRenderer_(pRenderer){
+Texture::Texture(std::string path,SDL_Renderer* pRenderer, int offsetX, int offsetY):pathToImage(path),pRenderer_(pRenderer),offsetX(offsetX),offsetY(offsetY){
 	SDL_Surface* pTempSurface = SDL_LoadBMP(path.c_str());
 	pTexture = SDL_CreateTextureFromSurface(pRenderer,pTempSurface);
 	SDL_FreeSurface(pTempSurface);
@@ -24,13 +24,15 @@ Texture::~Texture(){
 }
 
 void Texture::draw() {
-	rendererRectangle.x = x;
-	rendererRectangle.y = y;
+	rendererRectangle.x = x + offsetX;
+	rendererRectangle.y = y + offsetY;
 	SDL_RenderCopy(pRenderer_, GetTexture(), &bmpRectangle, &rendererRectangle);
 }
 
+
+
 void Texture::setPosition(int posX, int posY) {
-	x = posX;
-	y = posY;
+	x = posX + offsetX;
+	y = posY + offsetY;
 
 }

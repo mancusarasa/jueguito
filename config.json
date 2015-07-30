@@ -1,8 +1,15 @@
 {
-	"ventana" : 
+	"window" : 
 	{ 
-		"ancho" : 640, 
-		"alto" : 480 
-	} 
+		"width" : 640, 
+		"height" : 480 
+	},
+	"stage" :
+	{
+		"width" : 640,
+		"height" : 480,
+		"x" : 0,
+		"y" : 0
+	}
 }
 

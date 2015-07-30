@@ -1,6 +1,6 @@
 #include "../headers/Brick.h"
 
-Brick::Brick(SDL_Renderer* pRenderer):Texture(BRICK_BMP_PATH, pRenderer) {
+Brick::Brick(SDL_Renderer* pRenderer, int offsetX, int offsetY):Texture(BRICK_BMP_PATH, pRenderer, offsetX, offsetY) {
 }
 
 Brick::~Brick() {

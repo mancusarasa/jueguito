@@ -7,7 +7,7 @@
 
 class Texture {
 public:
-	Texture(std::string, SDL_Renderer*);
+	Texture(std::string, SDL_Renderer*, int offsetX, int offsetY);
 	~Texture();
 	virtual void draw();
 	virtual void setPosition(int x, int y);
@@ -22,6 +22,8 @@ protected:
 	std::string pathToImage;
 	float x;
 	float y;
+	int offsetX;
+	int offsetY;
 	SDL_Texture* GetTexture() {return pTexture;}
 	SDL_Rect& GetRectangle() {return rendererRectangle;}
 	

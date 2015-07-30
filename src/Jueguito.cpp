@@ -10,15 +10,22 @@ Jueguito::~Jueguito() {
 
 void Jueguito::init() {
 	
-
-
 	// initialize SDL
 	if(SDL_Init(SDL_INIT_EVERYTHING) >= 0){
 		setIsRunning(true);
 		// if succeeded create our window	 
 		// if the window creation succeeded create our renderer
+		 
+		// Obtengo los valores de configuración del Json
 		int windowHeight = JsonReader::Instance()->getWindowValue("height");
 		int windowWidth = JsonReader::Instance()->getWindowValue("width");
+
+		int stageHeight = JsonReader::Instance()->getStageValue("height");
+		int stageWidth = JsonReader::Instance()->getStageValue("width");
+ 		int stageX = JsonReader::Instance()->getStageValue("x");
+		int stageY = JsonReader::Instance()->getStageValue("y");
+
+		std::cout << stageX << stageY << std::endl;
 
 		if (window.Create("Much window, wow",windowWidth,windowHeight)) {
 			if (renderer.Create(window)){
@@ -27,13 +34,18 @@ void Jueguito::init() {
 				// This function expects Red, Green, Blue and
 				// Alpha as color values
 				renderer.SetDrawColor(255, 255, 0, 0);
-				Player* pallet = new Player(renderer.GetRenderer());
+
+				stage = new Stage(stageWidth, stageHeight, stageX, stageY);
+
+
+				Player* pallet = new Player(renderer.GetRenderer(), stage->getX(), stage->getY());
 				InputHandler::Instance()->addPlayer(pallet);
 				textures.push_back(pallet);
 			
-				Texture* brick = new Brick(renderer.GetRenderer());
+				Texture* brick = new Brick(renderer.GetRenderer(), stage->getX(), stage->getY());
 				brick->setPosition(100,100);
 				textures.push_back(brick);
+
 			}	
 		}
 		//std::cout << "running true" << std::endl;
