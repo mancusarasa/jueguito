@@ -1,6 +1,6 @@
 #include "../headers/Player.h"
 
-Player::Player(SDL_Renderer* pRenderer, int offsetX, int offsetY):Texture(IMAGE_PATH, pRenderer, offsetX, offsetY){
+Player::Player(SDL_Renderer* pRenderer):Texture(IMAGE_PATH, pRenderer){
 
 }
 

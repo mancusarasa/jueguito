@@ -25,7 +25,6 @@ void Jueguito::init() {
  		int stageX = JsonReader::Instance()->getStageValue("x");
 		int stageY = JsonReader::Instance()->getStageValue("y");
 
-		std::cout << stageX << stageY << std::endl;
 
 		if (window.Create("Much window, wow",windowWidth,windowHeight)) {
 			if (renderer.Create(window)){
@@ -38,11 +37,11 @@ void Jueguito::init() {
 				stage = new Stage(stageWidth, stageHeight, stageX, stageY);
 
 
-				Player* pallet = new Player(renderer.GetRenderer(), stage->getX(), stage->getY());
+				Player* pallet = new Player(renderer.GetRenderer());
 				InputHandler::Instance()->addPlayer(pallet);
 				textures.push_back(pallet);
 			
-				Texture* brick = new Brick(renderer.GetRenderer(), stage->getX(), stage->getY());
+				Texture* brick = new Brick(renderer.GetRenderer());
 				brick->setPosition(100,100);
 				textures.push_back(brick);
 
