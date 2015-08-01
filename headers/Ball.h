@@ -12,6 +12,8 @@ public:
 	void setSpeedX();
 	virtual void update();
 private:
+	float initialX;
+	float initialY;
 	float speedX;
 	float speedY;
 };

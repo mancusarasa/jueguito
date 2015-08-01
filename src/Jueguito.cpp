@@ -50,7 +50,7 @@ void Jueguito::init() {
 				textures.push_back(brick);
 
 				Ball* ball = new Ball(renderer.GetRenderer());
-				ball->setPosition(stageWidth / 2, stageHeight / 2);
+				ball->setPosition(300, 0);
 				textures.push_back(ball);
 
 
