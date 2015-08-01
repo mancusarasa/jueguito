@@ -32,15 +32,19 @@ void Jueguito::init() {
 				// everything succeeded lets draw the window	
 				// This function expects Red, Green, Blue and
 				// Alpha as color values
-				renderer.SetDrawColor(255, 255, 0, 0);
-
-				stage = new Stage(stageWidth, stageHeight, stageX, stageY);
+				//renderer.SetDrawColor(255, 255, 0, 0);
 
 
-				Player* pallet = new Player(renderer.GetRenderer());
-				InputHandler::Instance()->addPlayer(pallet);
-				textures.push_back(pallet);
-			
+				//Fondo de ventana
+				//Lo creé como Stage pero va a ser una clase aparte
+				std::string imgPath("imgs/black.png");
+				Stage* backgroundStage = new Stage(windowWidth, windowHeight, 0, 0, renderer.GetRenderer(), imgPath);
+				textures.push_back(backgroundStage);	
+
+				//Stage
+				stage = new Stage(stageWidth, stageHeight, stageX, stageY, renderer.GetRenderer());
+				textures.push_back(stage);
+
 				Texture* brick = new Brick(renderer.GetRenderer());
 				brick->setPosition(100,100);
 				textures.push_back(brick);
@@ -48,6 +52,12 @@ void Jueguito::init() {
 				Ball* ball = new Ball(renderer.GetRenderer());
 				ball->setPosition(stageWidth / 2, stageHeight / 2);
 				textures.push_back(ball);
+
+
+				Player* pallet = new Player(renderer.GetRenderer());
+				InputHandler::Instance()->addPlayer(pallet);
+				textures.push_back(pallet);
+			
 			}	
 		}
 		//std::cout << "running true" << std::endl;

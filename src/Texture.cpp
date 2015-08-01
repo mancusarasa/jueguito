@@ -4,7 +4,9 @@
 Texture::Texture(std::string path,SDL_Renderer* pRenderer):pathToImage(path),pRenderer_(pRenderer){
 	//SDL_Surface* pTempSurface = SDL_LoadBMP(path.c_str());
 	SDL_Surface* pTempSurface = IMG_Load(path.c_str());
+	if ( !pTempSurface ) std::cout << "No se pudo cargar la imagen: " << path << std::endl;
 	pTexture = SDL_CreateTextureFromSurface(pRenderer,pTempSurface);
+	if ( !pTexture) std::cout << "Error creando la textura" << std::endl;
 	SDL_FreeSurface(pTempSurface);
 	SDL_QueryTexture(pTexture,0,0,&rendererRectangle.w,&rendererRectangle.h);
 	/* Por defecto, seteo (x,y) = (0,0), o sea, arriba a la izquierda
@@ -21,7 +23,7 @@ Texture::Texture(std::string path,SDL_Renderer* pRenderer):pathToImage(path),pRe
 }
 
 Texture::~Texture(){
-
+	SDL_DestroyTexture(pTexture);
 }
 
 //Devuelve la versión int de un flotante, .5 redondea para arriba

@@ -31,7 +31,7 @@ protected:
 	int offsetX;
 	int offsetY;
 	SDL_Texture* GetTexture() {return pTexture;}
-	SDL_Rect& GetRectangle() {return rendererRectangle;}
+	SDL_Rect& GetRectangle()  {return rendererRectangle;}
 	
 };
 

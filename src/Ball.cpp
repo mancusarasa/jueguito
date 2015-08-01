@@ -11,6 +11,7 @@ Ball::~Ball() {
 }
 
 void Ball::update() {
+	if ( x >= 600 || x <= 0) x *= -1;
 	x += speedX;
 	y += speedY;
 	updatePosition(x,y);

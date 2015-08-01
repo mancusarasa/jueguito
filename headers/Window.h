@@ -16,10 +16,14 @@ public:
 	~Window();
 	bool Create(const char* title,int width, int height);
 	/*Este getter sólo tiene sentido porque SDL_Renderer necesita el SDL_Window* */
-	SDL_Window* GetWindow()const{return pWindow;};
+	SDL_Window* GetWindow() const { return pWindow; };
+	int getWindowHeight() const { return height; };
+	int getWindowWidth() const { return width; };
 
 private:
 	SDL_Window* pWindow;
+	int height;
+	int width;
 };
 
 #endif	/*__WINDOW__*/
