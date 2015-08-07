@@ -49,16 +49,13 @@ void Jueguito::init() {
 				brick->setPosition(100,100);
 				textures.push_back(brick);
 
-				Ball* ball = new Ball(renderer.GetRenderer());
-				ball->setPosition(300, 0);
-				textures.push_back(ball);
-
-
 				Player* pallet = new Player(renderer.GetRenderer());
 				InputHandler::Instance()->addPlayer(pallet);
-				textures.push_back(pallet);
-			
-			}	
+				textures.push_back(pallet);			
+
+				Ball* ball = new Ball(renderer.GetRenderer());
+				//ball->setPosition(0, 0);
+				textures.push_back(ball); 			}	
 		}
 		//std::cout << "running true" << std::endl;
 	}

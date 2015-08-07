@@ -2,6 +2,7 @@
 #define __BALL__
 
 #include "Texture.h"
+#include <math.h>
 #define BALL_IMG_PATH "imgs/ball.png"
 
 class Ball : public Texture
@@ -16,5 +17,6 @@ private:
 	float initialY;
 	float speedX;
 	float speedY;
+	float distanceX;
 };
 #endif
