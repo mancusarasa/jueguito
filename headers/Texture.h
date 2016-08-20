@@ -11,13 +11,13 @@ class Texture {
 public:
 	Texture(std::string, SDL_Renderer*);
 	~Texture();
-	virtual void draw();
-	virtual void setPosition(float x, float y); //Posicion inicial, usa el offset
-	virtual void updatePosition(float x, float y); //Posicion relativa a la actual, no usa el offset
-	virtual void moveDown();
-	virtual void moveUp();
-	virtual void update();
-	virtual void setSize(int width, int height);
+	void draw();
+	void setPosition(float x, float y); //Posicion inicial, usa el offset
+	void updatePosition(float x, float y); //Posicion relativa a la actual, no usa el offset
+	//virtual void moveDown();
+	//virtual void moveUp();
+	//virtual void update();
+	void setSize(int width, int height);
 
 
 protected:
@@ -26,13 +26,16 @@ protected:
 	SDL_Rect rendererRectangle;
 	SDL_Rect bmpRectangle;
 	std::string pathToImage;
-	float x;
-	float y;
+	//float x;
+	//float y;
 	int offsetX;
 	int offsetY;
 	SDL_Texture* GetTexture() {return pTexture;}
 	SDL_Rect& GetRectangle()  {return rendererRectangle;}
-	
+
+private:
+	int x;
+	int y;
 };
 
 #endif /*__TEXTURE__*/

@@ -4,8 +4,9 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include "Texture.h"
+#include "Drawable.h"
+#define STAGE_IMG_PATH "imgs/white.png"
 
-#define STAGE_IMG_PATH "imgs/stage.jpeg"
 
 /*
 	Clase Stage, necesaria en principio para definir bordes del escenario para el rebote de la pelota y a su vez abstraer su funcionalidad de la ventana.
@@ -13,7 +14,7 @@
  */
 
 
-class Stage : public Texture
+class Stage: public Drawable
 {
 public:
 	Stage( int width, int height, int x, int y, SDL_Renderer*);
@@ -23,8 +24,9 @@ public:
 	int getY() const { return y; }
 	int getWidth() const { return width; }
 	int getHeight() const { return height; }
-	virtual void draw();
-
+	//virtual void draw();
+	void draw();
+	Texture* texture;
 private:
 	int x;
 	int y;

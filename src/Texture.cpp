@@ -12,8 +12,12 @@ Texture::Texture(std::string path,SDL_Renderer* pRenderer):pathToImage(path),pRe
 	/* Por defecto, seteo (x,y) = (0,0), o sea, arriba a la izquierda
 	 * en la ventana.  
 	 */
-	rendererRectangle.x = 30;
-	rendererRectangle.y = 20;
+	//rendererRectangle.x = 30;
+	//rendererRectangle.y = 20;
+	rendererRectangle.x = 0;
+	rendererRectangle.y = 0;
+	
+
 	bmpRectangle.x = 0;
 	bmpRectangle.y = 0;
 	//bmpRectangle.x = rendererRectangle.x;
@@ -33,13 +37,15 @@ int floatToInt(float n) {
 
 //Las posiciones x e y son flotantes por cuestiones matemáticas, pero los pixeles son enteros, por eso es necesario convertir coordenadas a enteros
 void Texture::draw() {
-	rendererRectangle.x = floatToInt( x + JsonReader::Instance()->getStageValue("x") );
-	rendererRectangle.y = floatToInt( y + JsonReader::Instance()->getStageValue("y") );
-	SDL_RenderCopy(pRenderer_, GetTexture(), &bmpRectangle, &rendererRectangle);
+	rendererRectangle.x = floatToInt( x );
+	rendererRectangle.y = floatToInt( y );
+	int res = SDL_RenderCopy(pRenderer_, GetTexture(), &bmpRectangle, &rendererRectangle);
+	if (res != 0) std::cout << "Error cargando la imagen: " << pathToImage << " // error: " << SDL_GetError() << std::endl;
 }
 
 
 void Texture::updatePosition(float posX, float posY) {
+
 	x = posX;
 	y = posY;
 }
@@ -47,9 +53,8 @@ void Texture::updatePosition(float posX, float posY) {
 void Texture::setPosition(float posX, float posY) {
 	x = posX + JsonReader::Instance()->getStageValue("x");
 	y = posY + JsonReader::Instance()->getStageValue("y");
-
 }
-
+/*
 void Texture::update() {
 
 }
@@ -60,7 +65,7 @@ void Texture::moveUp() {
 
 void Texture::moveDown() {
 
-}
+}*/
 
 void Texture::setSize(int width, int height) {
 	rendererRectangle.w = width;

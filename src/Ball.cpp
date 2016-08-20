@@ -1,17 +1,16 @@
 #include "../headers/Ball.h"
 
-#define SPEEDY 0.01
-#define SPEEDX 0.6
+#define SPEEDY 0.00
+#define SPEEDX 0.06
 #define RIGHTX 500
 #define LEFTX 100
 #define PI 3.14159265
 
-Ball::Ball(SDL_Renderer* pRenderer):Texture(BALL_IMG_PATH,pRenderer) {
+Ball::Ball(SDL_Renderer* pRenderer):Drawable(BALL_IMG_PATH,pRenderer) {
 
 	setSize(20,20);
 	speedX = SPEEDX;
 	speedY = SPEEDY;
-	initialX = 0;
 	distanceX = 0;
 
 }
@@ -20,7 +19,15 @@ Ball::~Ball() {
 
 }
 
+float Ball::getX() {
+	return x;
+}
+
 void Ball::update() {
+	std::cout << this->x << std::endl;
+	this->x += speedX;
+	this->x += speedY;
+	updatePosition(this->x,200);
 /*
 	if ( x > RIGHTX) { //Borde derecho
 	
@@ -37,21 +44,21 @@ void Ball::update() {
 		distanceX = 0;
 	
 	}
-*/
-	distanceX = abs(x - initialX);
 
+	distanceX = abs(x - initialX);
+*/
 	///std::cout << x << "//" << initialX << distanceX << "-" << y << std::endl;
 	
 	/* Velocidad en X constante, el efecto tiene forma de parábola del tipo y = x^2
 	 * Como la parábola es muy abrupta (aumenta demasiado en Y), se le agrega un multiplicador que va a servir para que el efecto tarde más en escalar. 
 	 * Idem para la elección de la potencia, por ahora fueron calculados a ojo	 */
-	
+/*	
 	float effectDelay = 50000;
 	x += speedX;
 	float xRoot = pow(distanceX, 1.5);
 	float xSqrt = sqrt(distanceX);
 	y += xRoot / effectDelay;
-
+*/
 	//updatePosition(x,y);
 }
 

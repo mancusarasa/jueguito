@@ -1,11 +1,12 @@
 #ifndef __PLAYER__
 #define __PLAYER__
 
-#include "../headers/Texture.h"
+#include "Texture.h"
+#include "Drawable.h"
 #define IMAGE_PATH "imgs/pallet.bmp"
 
 
-class Player : public Texture {
+class Player : public Drawable {
 public:
 	Player(SDL_Renderer* );
 	~Player();

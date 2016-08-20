@@ -1,6 +1,6 @@
 #include "../headers/Player.h"
 
-Player::Player(SDL_Renderer* pRenderer):Texture(IMAGE_PATH, pRenderer){
+Player::Player(SDL_Renderer* pRenderer):Drawable(IMAGE_PATH, pRenderer){
 
 }
 
