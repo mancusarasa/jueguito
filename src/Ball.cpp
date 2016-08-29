@@ -23,11 +23,23 @@ float Ball::getX() {
 	return x;
 }
 
+float Ball::getNextPositionX() {
+	return this->x + speedX;
+}
+
+float Ball::getNextPositionY() {
+	return this->y + speedY;
+}
+
 void Ball::update() {
-	std::cout << this->x << std::endl;
+
+	//std::cout << this->x << std::endl;
+
 	this->x += speedX;
 	this->x += speedY;
 	updatePosition(this->x,200);
+
+
 /*
 	if ( x > RIGHTX) { //Borde derecho
 	

@@ -66,12 +66,13 @@ void Jueguito::init() {
 				pallet2->setPosition(400,100);
 				layoutManager->addDrawable(pallet2);
 
-
+				/* Insertar los objetos de tipo Ball al final de la lista de drawables */
 				Ball* ball = new Ball(renderer.GetRenderer());
 				float floatX = 120;
 				float floatY = 200;
 				ball->setPosition(floatX, floatY);
-				layoutManager->addDrawable(ball);
+				//layoutManager->addDrawable(ball);
+				layoutManager->addBouncer(ball);
 			}	
 		}
 		//std::cout << "running true" << std::endl;
@@ -98,9 +99,18 @@ void Jueguito::render() {
 */
 }
 
+/*Updatear primero los rebotadores y en base a las nuevas posiciones, 
+ *determinar si la futura posición de los rebotadores va a entrar en colisión.
+ */
 void Jueguito::update() {
+	//Primero updateo los no rebotadores
 	for (int i = 0; i < layoutManager->drawables.size(); i++){
 		layoutManager->drawables[i]->update();
+	}
+
+	//Actualizo los rebotadores y resuelvo colisiones
+	for (int i = 0; i < layoutManager->bouncers.size(); i++) {
+		layoutManager->manageBouncerUpdate(layoutManager->bouncers[i]);
 	}
 }
 

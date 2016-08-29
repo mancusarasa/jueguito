@@ -14,6 +14,8 @@ public:
 	void setSpeedX();
 	virtual void update();
 	float getX();
+	float getNextPositionX();
+	float getNextPositionY();
 private:
 	float initialX;
 	float initialY;

@@ -32,3 +32,45 @@ void LayoutManager::drawObjects(Renderer* renderer) {
 	renderer->Present();
 
 }
+
+void LayoutManager::addBouncer(Ball* ball) {
+	bouncers.push_back(ball);
+}
+
+
+// Gestiona la posibilidad de que la bola choque con algún obstáculo
+void LayoutManager::manageBouncerUpdate(Ball* ball) {
+	Drawable* obstacle = findCollitions(ball);
+	if (obstacle != NULL) {
+		solveCollition(ball, obstacle);
+	}
+}
+
+/* Compara el bouncer contra todos los drawables en busca de colisiones */
+Drawable* LayoutManager::findCollitions(Ball* ball) {
+
+	for (int i = 0; i < this->drawables.size(); i++){
+
+		Drawable* potentialObstacle = this->drawables[i];
+
+		if ( willCollide(ball, potentialObstacle) ) {
+			return potentialObstacle;
+		}
+	}
+	return NULL;
+}
+
+/* Resuelve la colisión 
+ * En principio sería detectar en qué eje es la colisión (pared lateral, inferior o superior)
+ * e invertir la velocidad en esa dirección
+ */
+void LayoutManager::solveCollition(Ball* ball, Drawable* obstacle) {
+
+}
+
+
+/* Evalúa si la bola en la proxima posicion va a chocar el potencial obstáculo */
+bool LayoutManager::willCollide(Ball* ball, Drawable* potentialObstacle) {
+	float nextBouncerPositionX = ball->getNextPositionX();
+	float nextBouncerPositionY = ball->getNextPositionY();
+}
