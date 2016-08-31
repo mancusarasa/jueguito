@@ -18,13 +18,13 @@ public:
 	//virtual void moveUp();
 	//virtual void update();
 	void setSize(int width, int height);
-
+	int getWidth() { return bmpRectangle.w;}
+	SDL_Rect bmpRectangle;
+	SDL_Rect rendererRectangle;
 
 protected:
 	SDL_Renderer* pRenderer_;
 	SDL_Texture* pTexture;
-	SDL_Rect rendererRectangle;
-	SDL_Rect bmpRectangle;
 	std::string pathToImage;
 	//float x;
 	//float y;

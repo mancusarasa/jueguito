@@ -39,11 +39,14 @@ protected:
 	float y;
 	int offsetX;
 	int offsetY;
+	int width;
+	int height;
 	
 public:	
 	Texture* getTexture() {return texture;}
 	SDL_Rect& getRectangle()  {return rendererRectangle;}
-
+	int getWidth() { return width;}
+	int getHeight() {return height;}
 };
 
 #endif

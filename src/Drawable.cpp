@@ -2,6 +2,8 @@
 
 Drawable::Drawable(std::string image_path, SDL_Renderer* pRenderer) {
 	this->texture = new Texture(image_path, pRenderer);
+	width = this->getTexture()->rendererRectangle.w;
+	height = this->getTexture()->rendererRectangle.h;
 
 }
 

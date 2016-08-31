@@ -61,17 +61,19 @@ void Jueguito::init() {
 				pallet->setPosition(50,100);
 				InputHandler::Instance()->addPlayer(pallet);
 				layoutManager->addDrawable(pallet);
+				layoutManager->addCollitionable(pallet);
 
 				Player* pallet2 = new Player(renderer.GetRenderer());
 				pallet2->setPosition(400,100);
 				layoutManager->addDrawable(pallet2);
+				layoutManager->addCollitionable(pallet2);
 
 				/* Insertar los objetos de tipo Ball al final de la lista de drawables */
 				Ball* ball = new Ball(renderer.GetRenderer());
 				float floatX = 120;
 				float floatY = 200;
 				ball->setPosition(floatX, floatY);
-				//layoutManager->addDrawable(ball);
+				layoutManager->addDrawable(ball);
 				layoutManager->addBouncer(ball);
 			}	
 		}
@@ -104,14 +106,17 @@ void Jueguito::render() {
  */
 void Jueguito::update() {
 	//Primero updateo los no rebotadores
-	for (int i = 0; i < layoutManager->drawables.size(); i++){
-		layoutManager->drawables[i]->update();
+	for (int i = 0; i < layoutManager->collitionables.size(); i++){
+		layoutManager->collitionables[i]->update();
 	}
 
 	//Actualizo los rebotadores y resuelvo colisiones
 	for (int i = 0; i < layoutManager->bouncers.size(); i++) {
-		layoutManager->manageBouncerUpdate(layoutManager->bouncers[i]);
+		//layoutManager->manageBouncerUpdate(layoutManager->bouncers[i]);
+		layoutManager->bouncers[i]->update();
+		layoutManager->bouncers[i]->getX();
 	}
+
 }
 
 void Jueguito::clean() {

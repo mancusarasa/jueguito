@@ -14,6 +14,10 @@ void LayoutManager::addDrawable(Drawable* drawable) {
 	drawables.push_back(drawable);
 }
 
+void LayoutManager::addCollitionable(Drawable* drawable) {
+	collitionables.push_back(drawable);
+}
+
 void LayoutManager::setStagePosition(int x, int y) {
 	stageX = x;
 	stageY = y;
@@ -48,12 +52,11 @@ void LayoutManager::manageBouncerUpdate(Ball* ball) {
 
 /* Compara el bouncer contra todos los drawables en busca de colisiones */
 Drawable* LayoutManager::findCollitions(Ball* ball) {
+	for (int i = 0; i < this->collitionables.size(); i++){
 
-	for (int i = 0; i < this->drawables.size(); i++){
-
-		Drawable* potentialObstacle = this->drawables[i];
-
+		Drawable* potentialObstacle = this->collitionables[i];
 		if ( willCollide(ball, potentialObstacle) ) {
+
 			return potentialObstacle;
 		}
 	}

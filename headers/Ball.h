@@ -16,6 +16,10 @@ public:
 	float getX();
 	float getNextPositionX();
 	float getNextPositionY();
+	float getSpeedX(){return speedX;}
+	float getSpeedY(){return speedY;}
+	bool isGoingRight();
+	bool isGoingUp();
 private:
 	float initialX;
 	float initialY;
