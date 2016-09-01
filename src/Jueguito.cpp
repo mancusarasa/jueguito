@@ -60,8 +60,8 @@ void Jueguito::init() {
 				Player* pallet = new Player(renderer.GetRenderer());
 				pallet->setPosition(50,100);
 				InputHandler::Instance()->addPlayer(pallet);
-				layoutManager->addDrawable(pallet);
-				layoutManager->addCollitionable(pallet);
+				//layoutManager->addDrawable(pallet);
+				//layoutManager->addCollitionable(pallet);
 
 				Player* pallet2 = new Player(renderer.GetRenderer());
 				pallet2->setPosition(400,100);
@@ -112,7 +112,7 @@ void Jueguito::update() {
 
 	//Actualizo los rebotadores y resuelvo colisiones
 	for (int i = 0; i < layoutManager->bouncers.size(); i++) {
-		//layoutManager->manageBouncerUpdate(layoutManager->bouncers[i]);
+		layoutManager->manageBouncerUpdate(layoutManager->bouncers[i]);
 		layoutManager->bouncers[i]->update();
 		layoutManager->bouncers[i]->getX();
 	}

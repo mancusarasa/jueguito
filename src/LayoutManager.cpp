@@ -76,4 +76,11 @@ void LayoutManager::solveCollition(Ball* ball, Drawable* obstacle) {
 bool LayoutManager::willCollide(Ball* ball, Drawable* potentialObstacle) {
 	float nextBouncerPositionX = ball->getNextPositionX();
 	float nextBouncerPositionY = ball->getNextPositionY();
+	//if (ball->isGoingRight()) { 
+	//}
+	if (ball->getX() /*+ ball->getWidth()*/ >= potentialObstacle->getX()) {
+		ball->bounceX();
+		if (ball->getX() < 405)
+		std::cout <<  "Colision" << ball->getX() /*+ ball->getWidth()*/ << "//" << potentialObstacle->getX()  << std::endl;
+	} 
 }

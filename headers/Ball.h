@@ -20,6 +20,7 @@ public:
 	float getSpeedY(){return speedY;}
 	bool isGoingRight();
 	bool isGoingUp();
+	void bounceX();
 private:
 	float initialX;
 	float initialY;

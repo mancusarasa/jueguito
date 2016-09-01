@@ -1,6 +1,6 @@
 #include "../headers/Ball.h"
 /* Notar que el eje x crece a la drecha y el eje y hacia abajo */
-#define SPEEDY 0.03
+#define SPEEDY 0.00
 #define SPEEDX 0.03
 #define RIGHTX 500
 #define LEFTX 100
@@ -19,6 +19,10 @@ Ball::~Ball() {
 
 }
 
+void Ball::bounceX() {
+	this->speedX * (-1);
+}
+
 float Ball::getX() {
 	return x;
 }
@@ -32,12 +36,12 @@ float Ball::getNextPositionY() {
 }
 
 //Si speedX llega a ser 0 gritamos "PINCHÓ!"  y sacamos del medio
-float Ball::isGoingRight() {
+bool Ball::isGoingRight() {
 	return getSpeedX() > 0;
 }
 
 //sí, me paso un poco por los huevos el caso speedy = 0
-float Ball::isGoingUp() {
+bool Ball::isGoingUp() {
 	return getSpeedY() < 0; //recordar el eje Y está invertido
 }
 

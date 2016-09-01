@@ -27,6 +27,7 @@ public:
 	//virtual void moveUp();
 	virtual void update();
 	virtual void setSize(int width, int height);
+	float getX() {return x;}
 
 	
 protected:
