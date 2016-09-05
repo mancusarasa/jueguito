@@ -141,8 +141,45 @@ bool LayoutManager::willCollide(Ball* ball, Drawable* potentialObstacle) {
 
 	if (ball->isGoingUp()) {
 
+		if (ballTopY <= obstacleBottomY
+				&& ballTopY >= obstacleBottomY - ball->getHeight() / 2) {
+
+			if (ballLeftX + ball->getWidth() / 2 > obstacleLeftX && ballRightX - ball->getWidth() / 2 < obstacleRightX) {
+
+				std::cout << "vertical" << std::endl;
+				return true;
+
+			} else {
+
+				if (ballRightX >= obstacleLeftX && ballLeftX <= obstacleRightX) {
+					std::cout << "diagonal" << std::endl;
+					return true;
+				}
+
+			}
+		}
+
 	} else {
 
+
+		if (ballBottomY >= obstacleTopY
+				&& ballBottomY >= obstacleTopY + ball->getHeight() / 2) {
+
+
+			if (ballLeftX + ball->getWidth() / 2 > obstacleLeftX && ballRightX - ball->getWidth() / 2 < obstacleRightX) {
+
+				std::cout << "vertical" << std::endl;
+				return true;
+
+			} else {
+
+				if (ballRightX >= obstacleLeftX && ballLeftX <= obstacleRightX) {
+					std::cout << "diagonal" << std::endl;
+					return true;
+				}
+
+			}
+		}
 	}
 
 	return false;
