@@ -33,6 +33,8 @@ public:
 
 private:
 	int stageX, stageY;
+	float getXImpactSurfacePosition(Drawable* drawable, int offset);
+	float getYImpactSurfacePosition(Drawable* drawable, int offset);
 
 };
 #endif

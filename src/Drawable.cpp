@@ -33,3 +33,11 @@ void Drawable::setPosition(float posX, float posY) {
 void Drawable::setSize(int width, int height) {
 	texture->setSize(width, height);
 }
+
+int Drawable::getWidth() {
+	return texture->getWidth();
+}
+
+int Drawable::getHeight() {
+	return texture->getHeight();
+}

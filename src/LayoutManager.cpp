@@ -56,7 +56,7 @@ Drawable* LayoutManager::findCollitions(Ball* ball) {
 
 		Drawable* potentialObstacle = this->collitionables[i];
 		if ( willCollide(ball, potentialObstacle) ) {
-
+			std::cout << "collition" << std::endl; 
 			return potentialObstacle;
 		}
 	}
@@ -68,19 +68,94 @@ Drawable* LayoutManager::findCollitions(Ball* ball) {
  * e invertir la velocidad en esa dirección
  */
 void LayoutManager::solveCollition(Ball* ball, Drawable* obstacle) {
-
+	//Congelo la bola en la posición actual
+	ball->setSpeedX( ball->getSpeedX() * -1);
+	ball->setSpeedY(0);
 }
 
 
 /* Evalúa si la bola en la proxima posicion va a chocar el potencial obstáculo */
 bool LayoutManager::willCollide(Ball* ball, Drawable* potentialObstacle) {
-	float nextBouncerPositionX = ball->getNextPositionX();
-	float nextBouncerPositionY = ball->getNextPositionY();
-	//if (ball->isGoingRight()) { 
-	//}
-	if (ball->getX() /*+ ball->getWidth()*/ >= potentialObstacle->getX()) {
-		ball->bounceX();
-		if (ball->getX() < 405)
-		std::cout <<  "Colision" << ball->getX() /*+ ball->getWidth()*/ << "//" << potentialObstacle->getX()  << std::endl;
-	} 
+	//float nextBouncerPositionX = ball->getNextPositionX();
+	//float nextBouncerPositionY = ball->getNextPositionY();
+
+	// Agarro todas las posiciones que necesito
+	float ballRightX = ball->getNextPositionX() + ball->getWidth();
+	float ballLeftX = ball->getNextPositionX();
+
+	float ballTopY = ball->getNextPositionY();
+	float ballBottomY = ball->getNextPositionY() + ball->getHeight();
+
+	float obstacleLeftX = potentialObstacle->getX();
+	float obstacleRightX = potentialObstacle->getX() + potentialObstacle->getWidth();
+
+	float obstacleTopY = potentialObstacle->getY();
+	float obstacleBottomY = potentialObstacle->getY() + potentialObstacle->getHeight();
+
+	if (ball->isGoingRight()) {
+	
+		//Condicion básica de rebote en X
+		if ( ballRightX >= obstacleLeftX 
+				&& ballRightX <= obstacleLeftX + ball->getWidth() / 2) {
+
+			//std::cout << "Posible Colisión en eje X" << std::endl;
+
+			//Condición básica de pos Y para colisionar UNICAMENTE sobre el eje X
+			if (ballTopY + ball->getHeight() / 2 > obstacleTopY && ballBottomY - ball->getHeight() / 2 < obstacleBottomY) {
+				std::cout << "horizontal" << std::endl;
+				return true;
+			}
+
+			//Condicion para que rebote en X sobre las esquinas
+			if(  ballBottomY >= obstacleTopY && ballTopY <= obstacleBottomY) {
+				std::cout << "diagonal" << std::endl;
+				return true; 
+			}
+		
+		} 
+
+	} else {
+
+		//Condicion básica de rebote en X
+
+		if ( ballLeftX <= obstacleRightX 
+				&& ballLeftX >= obstacleRightX - ball->getWidth() / 2) {
+
+			//Esto se mantiene igual
+
+			//Condición básica de pos Y para colisionar UNICAMENTE sobre el eje X
+			if (ballTopY + ball->getHeight() / 2 > obstacleTopY && ballBottomY - ball->getHeight() / 2 < obstacleBottomY) {
+				std::cout << "horizontal" << std::endl;
+				return true;
+			}
+
+			//Condicion para que rebote en X sobre las esquinas
+			if(  ballBottomY >= obstacleTopY && ballTopY <= obstacleBottomY) {
+				std::cout << "diagonal" << std::endl;
+				return true; 
+			}
+		
+		} 
+
+	}
+
+	if (ball->isGoingUp()) {
+
+	} else {
+
+	}
+
+	return false;
+	
 }
+
+//Dado un drawable y un offset (ancho de la imagen) según corresponda, devuelve la posición en x de la
+//cara del objeto que puede estar colisionando.
+/*
+float LayoutManager::getXImpactSurfacePosition(Drawable* drawable, int offset) {
+	return drawable->getX() + offset;
+}
+
+float LayoutManager::getYImpactSurfacePosition(Drawable* drawable, int offset) {
+	return drawable->getY() + offset;  
+}*/

@@ -28,7 +28,9 @@ public:
 	virtual void update();
 	virtual void setSize(int width, int height);
 	float getX() {return x;}
-
+	float getY() {return y;}
+	int getWidth();
+	int getHeight();
 	
 protected:
 	SDL_Renderer* pRenderer_;
@@ -46,8 +48,8 @@ protected:
 public:	
 	Texture* getTexture() {return texture;}
 	SDL_Rect& getRectangle()  {return rendererRectangle;}
-	int getWidth() { return width;}
-	int getHeight() {return height;}
+	//int getWidth() { return width;}
+	//int getHeight() {return height;}
 };
 
 #endif

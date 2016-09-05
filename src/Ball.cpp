@@ -1,7 +1,7 @@
 #include "../headers/Ball.h"
 /* Notar que el eje x crece a la drecha y el eje y hacia abajo */
 #define SPEEDY 0.00
-#define SPEEDX 0.03
+#define SPEEDX 0.05
 #define RIGHTX 500
 #define LEFTX 100
 #define PI 3.14159265
@@ -26,6 +26,12 @@ void Ball::bounceX() {
 float Ball::getX() {
 	return x;
 }
+
+
+float Ball::getY() {
+	return y;
+}
+
 
 float Ball::getNextPositionX() {
 	return this->x + speedX;
@@ -86,3 +92,20 @@ void Ball::update() {
 	//updatePosition(x,y);
 }
 
+//Devuelve la posición en X de la cara de la bola que haría contacto con una posible colisión
+float Ball::getXContactPosition() {
+	if (this->isGoingRight()) {
+		return this->getX() + this->getWidth();
+	} else {
+		return this->getX();
+	}
+}
+
+//Devuelve la posición en Y de la cara de la bola que haría contacto con una posible colisión
+float Ball::getYContactPosition() {
+	if (this->isGoingUp()) {
+		return this->getY();
+	} else {
+		return this->getY() + this->getHeight();
+	}
+}

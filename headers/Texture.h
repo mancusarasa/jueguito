@@ -18,9 +18,10 @@ public:
 	//virtual void moveUp();
 	//virtual void update();
 	void setSize(int width, int height);
-	int getWidth() { return bmpRectangle.w;}
 	SDL_Rect bmpRectangle;
 	SDL_Rect rendererRectangle;
+	int getWidth() { return rendererRectangle.w;}
+	int getHeight() { return rendererRectangle.h;}
 
 protected:
 	SDL_Renderer* pRenderer_;

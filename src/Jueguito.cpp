@@ -60,8 +60,8 @@ void Jueguito::init() {
 				Player* pallet = new Player(renderer.GetRenderer());
 				pallet->setPosition(50,100);
 				InputHandler::Instance()->addPlayer(pallet);
-				//layoutManager->addDrawable(pallet);
-				//layoutManager->addCollitionable(pallet);
+				layoutManager->addDrawable(pallet);
+				layoutManager->addCollitionable(pallet);
 
 				Player* pallet2 = new Player(renderer.GetRenderer());
 				pallet2->setPosition(400,100);
@@ -71,7 +71,7 @@ void Jueguito::init() {
 				/* Insertar los objetos de tipo Ball al final de la lista de drawables */
 				Ball* ball = new Ball(renderer.GetRenderer());
 				float floatX = 120;
-				float floatY = 200;
+				float floatY = 85;
 				ball->setPosition(floatX, floatY);
 				layoutManager->addDrawable(ball);
 				layoutManager->addBouncer(ball);

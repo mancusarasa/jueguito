@@ -14,6 +14,7 @@ public:
 	void setSpeedX();
 	virtual void update();
 	float getX();
+	float getY();
 	float getNextPositionX();
 	float getNextPositionY();
 	float getSpeedX(){return speedX;}
@@ -21,11 +22,17 @@ public:
 	bool isGoingRight();
 	bool isGoingUp();
 	void bounceX();
+	float getXContactPosition();
+	float getYContactPosition();
+	float setSpeedX(float speed) {speedX = speed;}
+	float setSpeedY(float speed) {speedY = speed;}
+
 private:
 	float initialX;
 	float initialY;
 	float speedX;
 	float speedY;
 	float distanceX;
+
 };
 #endif
