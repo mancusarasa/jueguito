@@ -70,7 +70,7 @@ Drawable* LayoutManager::findCollitions(Ball* ball) {
 void LayoutManager::solveCollition(Ball* ball, Drawable* obstacle) {
 	//Congelo la bola en la posición actual
 	ball->setSpeedX( ball->getSpeedX() * -1);
-	ball->setSpeedY(0);
+	ball->setSpeedY(ball->getSpeedY() * -1);
 }
 
 
@@ -161,10 +161,8 @@ bool LayoutManager::willCollide(Ball* ball, Drawable* potentialObstacle) {
 
 	} else {
 
-
 		if (ballBottomY >= obstacleTopY
-				&& ballBottomY >= obstacleTopY + ball->getHeight() / 2) {
-
+				&& ballBottomY <= obstacleTopY + ball->getHeight() / 2) {
 
 			if (ballLeftX + ball->getWidth() / 2 > obstacleLeftX && ballRightX - ball->getWidth() / 2 < obstacleRightX) {
 

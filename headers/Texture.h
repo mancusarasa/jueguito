@@ -22,6 +22,7 @@ public:
 	SDL_Rect rendererRectangle;
 	int getWidth() { return rendererRectangle.w;}
 	int getHeight() { return rendererRectangle.h;}
+	double rotationAngle;
 
 protected:
 	SDL_Renderer* pRenderer_;

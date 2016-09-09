@@ -31,7 +31,8 @@ public:
 	float getY() {return y;}
 	int getWidth();
 	int getHeight();
-	
+	void setRotation(double angle);
+		
 protected:
 	SDL_Renderer* pRenderer_;
 	Texture* texture;

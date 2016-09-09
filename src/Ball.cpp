@@ -1,7 +1,7 @@
 #include "../headers/Ball.h"
 /* Notar que el eje x crece a la drecha y el eje y hacia abajo */
-#define SPEEDY 0.00
-#define SPEEDX 0.05
+#define SPEEDY 0.05
+#define SPEEDX 0.00
 #define RIGHTX 500
 #define LEFTX 100
 #define PI 3.14159265

@@ -41,3 +41,7 @@ int Drawable::getWidth() {
 int Drawable::getHeight() {
 	return texture->getHeight();
 }
+
+void Drawable::setRotation(double angle) {
+	this->texture->rotationAngle = angle;
+}

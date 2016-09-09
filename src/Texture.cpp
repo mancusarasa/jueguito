@@ -24,6 +24,7 @@ Texture::Texture(std::string path,SDL_Renderer* pRenderer):pathToImage(path),pRe
 	//bmpRectangle.y = rendererRectangle.y;
 	bmpRectangle.w = rendererRectangle.w;
 	bmpRectangle.h = rendererRectangle.h;
+	this->rotationAngle = 0;
 }
 
 Texture::~Texture(){
@@ -39,7 +40,7 @@ int floatToInt(float n) {
 void Texture::draw() {
 	rendererRectangle.x = floatToInt( x );
 	rendererRectangle.y = floatToInt( y );
-	int res = SDL_RenderCopy(pRenderer_, GetTexture(), &bmpRectangle, &rendererRectangle);
+	int res = SDL_RenderCopyEx(pRenderer_, GetTexture(), &bmpRectangle, &rendererRectangle, this->rotationAngle, NULL, SDL_FLIP_NONE);
 	if (res != 0) std::cout << "Error cargando la imagen: " << pathToImage << " // error: " << SDL_GetError() << std::endl;
 }
 
